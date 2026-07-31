@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+
+# Saved weights — regenerable artifacts, not source
+*.npz
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
