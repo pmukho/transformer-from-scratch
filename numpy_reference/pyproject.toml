@@ -17,11 +17,19 @@ packages = ["src/numpy_reference"]
 [dependency-groups]
 dev = [
     "pytest>=8.0",
+    "ruff>=0.16.2",
     "torch>=2.13.0",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]  # line length is handled by the formatter
 
 # torch is a test-only oracle, pinned to the CPU wheel index (no CUDA build).
 [[tool.uv.index]]
