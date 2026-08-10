@@ -9,6 +9,9 @@ __pycache__/
 # Saved weights — regenerable artifacts, not source
 *.npz
 
+# C++ build
+cpp_engine/build/
+
 # OS / editor
 .DS_Store
 .idea/
