@@ -14,25 +14,25 @@
 namespace engine {
 
 struct BlockWeights {
-  Tensor attn_norm;  // (dim,)
-  Tensor wq;         // (dim, n_heads * head_dim)
-  Tensor wk;         // (dim, kv_heads * head_dim)
-  Tensor wv;         // (dim, kv_heads * head_dim)
-  Tensor wo;         // (n_heads * head_dim, dim)
-  Tensor ffn_norm;   // (dim,)
-  Tensor w_gate;     // (dim, ffn_hidden)
-  Tensor w_up;       // (dim, ffn_hidden)
-  Tensor w_down;     // (ffn_hidden, dim)
+  Tensor attn_norm; // (dim,)
+  Tensor wq;        // (dim, n_heads * head_dim)
+  Tensor wk;        // (dim, kv_heads * head_dim)
+  Tensor wv;        // (dim, kv_heads * head_dim)
+  Tensor wo;        // (n_heads * head_dim, dim)
+  Tensor ffn_norm;  // (dim,)
+  Tensor w_gate;    // (dim, ffn_hidden)
+  Tensor w_up;      // (dim, ffn_hidden)
+  Tensor w_down;    // (ffn_hidden, dim)
 };
 
 struct Weights {
   Config config;
-  Tensor embedding;               // (vocab, dim)
+  Tensor embedding; // (vocab, dim)
   std::vector<BlockWeights> blocks;
-  Tensor final_norm;              // (dim,)
+  Tensor final_norm; // (dim,)
 };
 
 // Load and validate model.npz (flat keys from scripts/export.py) into Weights.
-Weights load_model(const std::string& path);
+Weights load_model(const std::string &path);
 
-}  // namespace engine
+} // namespace engine

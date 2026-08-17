@@ -12,8 +12,8 @@ struct Config {
   int head_dim = 0;
   int ffn_hidden = 0;
   int vocab = 0;
-  float rope_base = 0.0f;
-  float eps = 0.0f;
+  float rope_base = 0.0F;
+  float eps = 0.0F;
 };
 
-}  // namespace engine
+} // namespace engine
