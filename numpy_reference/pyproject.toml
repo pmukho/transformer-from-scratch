@@ -23,6 +23,7 @@ dev = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["scripts"]  # so tests can import the export script
 
 [tool.ruff]
 line-length = 100

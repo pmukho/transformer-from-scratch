@@ -1,0 +1,19 @@
+# clang-tidy config, read by clangd (inline) and the clang-tidy CLI.
+# Keep the checks that catch real bugs; silence the noisy ones that would just
+# light up the low-level binary parser and the matmul index math.
+Checks: >
+  clang-analyzer-*,
+  bugprone-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  modernize-*,
+  -readability-magic-numbers,
+  -readability-identifier-length,
+  -readability-braces-around-statements,
+  -modernize-use-trailing-return-type,
+  -modernize-avoid-c-arrays,
+  -bugprone-easily-swappable-parameters
+
+HeaderFilterRegex: 'include/engine/.*'
+WarningsAsErrors: ''
