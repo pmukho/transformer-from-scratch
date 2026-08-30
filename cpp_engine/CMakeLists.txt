@@ -13,6 +13,10 @@ endif()
 # Never benchmark a debug build. AVX2 + FMA + native tuning.
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -march=native -mavx2 -mfma")
 
+# Select the matmul inner loop: ON = AVX2 + FMA + OpenMP, OFF = naive triple loop.
+# Flip to A/B correctness and speedup between two builds.
+option(ENGINE_AVX2 "Use the AVX2 matmul kernels" ON)
+
 find_package(OpenMP)
 
 add_library(engine
@@ -22,6 +26,9 @@ add_library(engine
   src/model.cpp
 )
 target_include_directories(engine PUBLIC include)
+if(ENGINE_AVX2)
+  target_compile_definitions(engine PUBLIC ENGINE_AVX2)
+endif()
 if(OpenMP_CXX_FOUND)
   target_link_libraries(engine PUBLIC OpenMP::OpenMP_CXX)
 endif()
